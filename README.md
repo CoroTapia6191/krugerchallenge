@@ -6,9 +6,9 @@ Para el despliegue primero se debe ejecutar el script “ScriptDatabae” en la 
 
 Consultar documentación en ../swagger-ui/index.html
 
-Los web services desplegados están protegidos por roles y JWT, para poder consumir inicialmente se debe llamar al siguiente método post sin parámetros: http://localhost:8080/personservice/newAdmin , el cual genera un usuario con rol administrador(username=9999999999 y password=9999999999);
+Los web services desplegados están protegidos por roles y JWT, para poder consumir inicialmente se debe llamar al siguiente método post sin parámetros: http://localhost:8080/personservice/newAdmin , el cual genera un usuario con rol ADMINISTRADOR (username=9999999999 y password=9999999999);
 
-Con el usuario indicado se puede autenticar en el método post http://localhost:8080/userservice/login y se obtiene el token con rol ADMINISTRADOR y consumir los servicios desplegados.
+Con el usuario indicado se puede autenticar en el método post http://localhost:8080/userservice/login y se obtiene el token con rol ADMINISTRADOR para consumir los servicios desplegados.
 
 Al crear una persona se crean los usuarios solicitados con username y password = cedula ingresada y con rol EMPLEADO.
 
