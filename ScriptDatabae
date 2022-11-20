@@ -1,0 +1,90 @@
+
+CREATE USER krchallengeuser;
+ALTER USER krchallengeuser WITH ENCRYPTED PASSWORD 'ch@llengueBcoro';
+
+CREATE DATABASE inventoriesv;
+
+
+create table person(
+   id varchar(10) primary key,
+   name varchar(40) not null,
+   lastname varchar(40) not null,
+   email varchar(50) not null,
+   birthdate date,
+   address varchar(70),
+   phonenumber varchar(20)
+);
+COMMENT ON TABLE person IS 'This is the table person';
+COMMENT ON COLUMN person.id IS 'This is the person unique identifier';
+COMMENT ON COLUMN person.name IS 'This is the person name';
+COMMENT ON COLUMN person.lastname IS 'This is the person lastname';
+COMMENT ON COLUMN person.email IS 'This is the person email';
+COMMENT ON COLUMN person.birthdate IS 'This is the person bithday';
+COMMENT ON COLUMN person.address IS 'This is the person address';
+COMMENT ON COLUMN person.phonenumber IS 'This is the person mobile number';
+
+GRANT ALL PRIVILEGES ON TABLE person TO krchallengeuser;
+ 
+create table vaccine(
+  id int primary key,
+  name varchar(50) not null
+);
+COMMENT ON TABLE vaccine IS 'This is the table vaccine';
+COMMENT ON COLUMN vaccine.id IS 'This is the vaccine unique identifier';
+COMMENT ON COLUMN vaccine.name IS 'This is the vaccine name';
+ 
+ GRANT ALL PRIVILEGES ON TABLE vaccine TO krchallengeuser;
+
+create table vaccineperson(
+  idvaccine int not null,
+  idperson varchar(20) not null,
+  vaccinenumber int not null,
+  vaccinationdate date not null
+);
+COMMENT ON TABLE vaccineperson IS 'This is the table where applied vaccines are registered';
+COMMENT ON COLUMN vaccineperson.idvaccine IS 'This is the vaccine unique identifier';
+COMMENT ON COLUMN vaccineperson.idperson IS 'This is the person unique identifier';
+COMMENT ON COLUMN vaccineperson.vaccinenumber IS 'This is the vaccine number';
+COMMENT ON COLUMN vaccineperson.vaccinationdate IS 'This is the vaccination date';
+
+
+ALTER TABLE ONLY vaccineperson ADD CONSTRAINT "PK_VACCINEPERSON" PRIMARY KEY (idvaccine, idperson,vaccinenumber);
+ALTER TABLE vaccineperson ADD CONSTRAINT fk_idvaccine FOREIGN KEY (idvaccine) REFERENCES vaccine (id);
+ALTER TABLE vaccineperson ADD CONSTRAINT fk_idpersonn FOREIGN KEY (idperson) REFERENCES person (id);
+
+GRANT ALL PRIVILEGES ON TABLE vaccineperson TO krchallengeuser;
+
+create table roles(
+   id int primary key,
+   name varchar(20) not null,
+   description varchar(100)
+);
+ 
+ COMMENT ON TABLE roles IS 'This is the table of roles';
+ COMMENT ON COLUMN roles.id IS 'This is the rol unique id';
+ COMMENT ON COLUMN roles.name IS 'This is the name of the rol';
+ COMMENT ON COLUMN roles.description IS 'This is the brief description of the rol';
+ GRANT ALL PRIVILEGES ON TABLE roles TO krchallengeuser;
+ 
+create table userkrug(
+   username varchar(25) primary key,
+   password varchar(100) not null
+);
+
+
+ COMMENT ON TABLE userkrug IS 'This is the table of userkrug';
+ COMMENT ON COLUMN userkrug.username IS 'This is the unique username';
+ COMMENT ON COLUMN userkrug.password IS 'This is the password of the userkrug';
+ 
+
+ GRANT ALL PRIVILEGES ON TABLE userkrug TO krchallengeuser;
+ 
+insert into roles(id, name,description) values (1, 'ADMINISTRADOR','FULL ACCESS');
+insert into roles(id, name,description) values (2, 'EMPLEADO','LIMITED ACCESS');
+
+insert into vaccine(id, name) values(1, 'Sputnik');
+insert into vaccine(id, name) values(2, 'AstraZeneca');
+insert into vaccine(id, name) values(3, 'Pfizer');
+insert into vaccine(id, name) values(4, 'Jhonson&Jhonson');
+
+ 
