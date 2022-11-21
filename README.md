@@ -1,6 +1,6 @@
 # krugerchallenge
 Back end developer challenge
--Proyecto realizado en el ambiente de Spring Tool Suite 4 de Eclipse.
+-Proyecto realizado en el ambiente de Spring Tool Suite 4 de Eclipse. compilado con Java 11
 
 Para el despliegue primero se debe ejecutar el script “ScriptDatabae” en la base local postgresql, las tres primeras líneas crearán la nueva base de datos y el usuario para acceder a la base de datos.
 
