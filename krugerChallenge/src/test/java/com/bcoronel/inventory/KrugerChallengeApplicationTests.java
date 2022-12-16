@@ -31,7 +31,7 @@ class KrugerChallengeApplicationTests {
 		Userkrug user = userrepository.findById(person.getId()).get();
 		
 		assertTrue(user.getUsername().equals(person.getId()));
-		
+		//mi comentario
 	}
 	
 /*	@Test
