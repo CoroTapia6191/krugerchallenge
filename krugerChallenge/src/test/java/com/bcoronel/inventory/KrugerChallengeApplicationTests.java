@@ -32,6 +32,7 @@ class KrugerChallengeApplicationTests {
 		
 		assertTrue(user.getUsername().equals(person.getId()));
 		//Comento desde linux
+		//y recontra comento
 	}
 	
 /*	@Test
